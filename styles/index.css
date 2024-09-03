@@ -3,10 +3,140 @@ html {
   margin: 0;
   background-color: #111111;
   color: white;
+  font-optical-sizing: auto;
+  font-family: 'Inter', system-ui;
 }
 
 header {
   display: flex;
-  width: 100%;
-  height: 10vh;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 40px;
+  width: 90%;
+}
+
+main {
+  min-height: 100dvh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  background: -webkit-linear-gradient(#ffffff, #cccccc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+p {
+  font-size: 1.4rem;
+}
+
+.muted {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.text-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 0.25rem;
+  transform: translateY(0.2rem);
+}
+
+hr {
+  width: 90%;
+  background-color: #eee;
+  border: 0 none;
+  color: #eee;
+  height: 1px;
+  opacity: 0.1;
+}
+
+.logo {
+  height: 42px;
+  width: 35px;
+  transform: scale(0.7);
+}
+
+.github-logo {
+  border-radius: 5px;
+  background-color: #181818;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+  font-weight: 600;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.github-logo img {
+  height: 20px;
+}
+
+.github-logo:hover {
+  background-color: #222222;
+  cursor: pointer;
+}
+
+.hero-section {
+  text-align: center;
+}
+
+.hero-section h1,
+h2 {
+  margin: 0;
+}
+
+.hero-section p {
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  width: 90%;
+}
+
+.credits {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.credits img {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+}
+
+.credits p {
+  font-size: 1rem;
+  line-height: 1.4rem;
+  font-weight: 300;
+}
+
+.credits b {
+  font-weight: 500;
 }

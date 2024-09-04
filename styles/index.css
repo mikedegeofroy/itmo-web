@@ -10,13 +10,16 @@
 
 /* || General Styles */
 
+* {
+  font-optical-sizing: auto;
+  font-family: 'Inter', system-ui;
+}
+
 body,
 html {
   margin: 0;
   background-color: #111111;
   color: white;
-  font-optical-sizing: auto;
-  font-family: 'Inter', system-ui;
 }
 
 main {
@@ -137,6 +140,29 @@ hr {
   opacity: 0.1;
 }
 
+.btn-primary {
+  background-color: white;
+  color: black;
+  border: 0;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  transition: transform 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.btn-primary:active {
+  transform: scale(0.9);
+}
+
 /* || Header Styles */
 
 header {
@@ -224,6 +250,31 @@ h2 {
   margin-left: auto;
 }
 
+.hero-section .special-btn {
+  margin: auto;
+}
+
+.special-btn {
+  position: relative;
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+}
+
+.special-btn button {
+  z-index: 2;
+  position: relative;
+}
+
+.special-btn .emoji {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
 @media (max-width: 576px) {
   .hero-section p {
     width: 80%;
@@ -234,11 +285,89 @@ h2 {
   .hero-section p {
     width: 80%;
   }
+
+  .special-btn:hover .emoji:nth-of-type(1) {
+    transform: translate(-290%, -120%);
+  }
+
+  .special-btn:hover .emoji:nth-of-type(2) {
+    transform: translate(290%, 120%);
+  }
+
+  .special-btn:hover .emoji:nth-of-type(3) {
+    transform: translate(0%, -150%);
+  }
+
+  .special-btn:hover .emoji:nth-of-type(4) {
+    transform: translate(0%, 150%);
+  }
+
+  .special-btn:hover .emoji:nth-of-type(5) {
+    transform: translate(-290%, 120%);
+  }
+
+  .special-btn:hover .emoji:nth-of-type(6) {
+    transform: translate(290%, -120%);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .hero-section p {
+    width: 80%;
+  }
+
+  .special-btn:hover .emoji:nth-of-type(1) {
+    transform: translate(-290%, -120%);
+  }
+
+  .special-btn:hover .emoji:nth-of-type(2) {
+    transform: translate(290%, 120%);
+  }
+
+  .special-btn:hover .emoji:nth-of-type(3) {
+    transform: translate(0%, -150%);
+  }
+
+  .special-btn:hover .emoji:nth-of-type(4) {
+    transform: translate(0%, 150%);
+  }
+
+  .special-btn:hover .emoji:nth-of-type(5) {
+    transform: translate(-290%, 120%);
+  }
+
+  .special-btn:hover .emoji:nth-of-type(6) {
+    transform: translate(290%, -120%);
+  }
 }
 
 @media (min-width: 993px) {
   .hero-section p {
     width: 45%;
+  }
+
+  .special-btn:hover .emoji:nth-of-type(1) {
+    transform: translate(-290%, -120%);
+  }
+
+  .special-btn:hover .emoji:nth-of-type(2) {
+    transform: translate(290%, 120%);
+  }
+
+  .special-btn:hover .emoji:nth-of-type(3) {
+    transform: translate(0%, -150%);
+  }
+
+  .special-btn:hover .emoji:nth-of-type(4) {
+    transform: translate(0%, 150%);
+  }
+
+  .special-btn:hover .emoji:nth-of-type(5) {
+    transform: translate(-290%, 120%);
+  }
+
+  .special-btn:hover .emoji:nth-of-type(6) {
+    transform: translate(290%, -120%);
   }
 }
 

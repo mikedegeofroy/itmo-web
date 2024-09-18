@@ -1,4 +1,4 @@
-import { IArticleProps } from '@/entities/articles/model/types';
+import { IArticleProps } from '@/entities/articles/model/article-props.interface';
 import { create } from 'zustand';
 
 interface ArticleStore {

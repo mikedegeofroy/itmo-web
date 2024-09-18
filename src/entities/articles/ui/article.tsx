@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { IArticleProps } from '../model/types';
+import { IArticleProps } from '../model/article-props.interface';
 import { Card, CardProps } from '@vkontakte/vkui';
 
 import styles from './article.module.css';

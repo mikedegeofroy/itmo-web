@@ -8,7 +8,7 @@ import { Banner } from '@/entities/banner/ui/banner';
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 import { getStoryDetails, getTopStories } from '@/shared/api/hackerNews';
 import { useArticleStore } from '@/shared/stores/article.store';
-import { IArticleProps } from '@/entities/articles/model/types';
+import { IArticleProps } from '@/entities/articles/model/article-props.interface';
 
 export interface IHomeProps extends NavIdProps {
   id: string;

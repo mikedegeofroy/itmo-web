@@ -11,7 +11,7 @@ import {
 import bridge from '@vkontakte/vk-bridge';
 import { useParams, useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 import { useArticleStore } from '@/shared/stores/article.store';
-import { IArticleProps } from '@/entities/articles/model/types';
+import { IArticleProps } from '@/entities/articles/model/article-props.interface';
 
 export interface IArticlePageProps {
   id: string;

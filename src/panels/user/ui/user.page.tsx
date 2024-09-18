@@ -11,7 +11,7 @@ import { UserInfo } from '@vkontakte/vk-bridge';
 import { FC } from 'react';
 import { ArticleCard } from '@/entities/articles/ui/article';
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
-import { IArticleProps } from '@/entities/articles/model/types';
+import { IArticleProps } from '@/entities/articles/model/article-props.interface';
 
 import styles from './user.module.css';
 

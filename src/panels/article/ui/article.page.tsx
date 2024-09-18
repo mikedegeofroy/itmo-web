@@ -5,6 +5,7 @@ import styles from './article.module.css';
 import {
   Icon20Bookmark,
   Icon20BookmarkOutline,
+  Icon20Chain,
   Icon20LogoVk,
 } from '@vkontakte/icons';
 import bridge from '@vkontakte/vk-bridge';
@@ -33,16 +34,66 @@ export const Article: FC<IArticlePageProps> = () => {
   }, [params, articles]);
 
   const share = () => {
+    if (!article) return;
+
     bridge
       .send('VKWebAppShowStoryBox', {
         background_type: 'image',
-        url: 'https://sun9-65.userapi.com/c850136/v850136098/1b77eb/0YK6suXkY24.jpg',
-        attachment: {
-          text: 'book',
-          type: 'photo',
-          owner_id: 743784474,
-          id: 12345678,
-        },
+        url: 'https://storage.yandexcloud.net/dishash-s3/background.png',
+        stickers: [
+          {
+            sticker_type: 'native',
+            sticker: {
+              can_delete: false,
+              action_type: 'text',
+              action: {
+                text: article?.title ?? '',
+              },
+              transform: {
+                translation_y: -0.3,
+              },
+            },
+          },
+          {
+            sticker_type: 'renderable',
+            sticker: {
+              can_delete: false,
+              content_type: 'image',
+              url: 'https://storage.yandexcloud.net/dishash-s3/button.png',
+              transform: {
+                gravity: 'center_bottom',
+                translation_y: -0.1,
+              },
+              clickable_zones: [
+                {
+                  action_type: 'link',
+                  action: {
+                    link: article.url,
+                    tooltip_text_key: 'tooltip_open_post',
+                  },
+                  clickable_area: [
+                    {
+                      x: 0,
+                      y: 0,
+                    },
+                    {
+                      x: 0,
+                      y: 891,
+                    },
+                    {
+                      x: 167,
+                      y: 0,
+                    },
+                    {
+                      x: 167,
+                      y: 891,
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        ],
       })
       .then((data) => {
         console.log(data);
@@ -56,6 +107,8 @@ export const Article: FC<IArticlePageProps> = () => {
         console.log(error);
       });
   };
+
+  const openUrl = () => {};
 
   return (
     <Panel id={params?.id}>
@@ -78,6 +131,9 @@ export const Article: FC<IArticlePageProps> = () => {
             <span>{article?.datetime.toDateString()}</span>
           </div>
           <div style={{ display: 'flex' }}>
+            <div onClick={openUrl} className={styles['lower-icon']}>
+              <Icon20Chain />
+            </div>
             <div onClick={share} className={styles['lower-icon']}>
               <Icon20LogoVk />
             </div>
@@ -85,7 +141,7 @@ export const Article: FC<IArticlePageProps> = () => {
               className={styles['lower-icon']}
               onClick={() => setSaved(!saved)}
             >
-              {saved ? <Icon20BookmarkOutline /> : <Icon20Bookmark />}
+              {saved ? <Icon20Bookmark /> : <Icon20BookmarkOutline />}
             </div>
           </div>
         </Card>

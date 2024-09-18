@@ -30,6 +30,7 @@ const articles: IArticleProps[] = [
     new: true,
     content_id: 0,
     text: '',
+    url: '',
   },
 ];
 

@@ -6,4 +6,5 @@ export interface IArticleProps {
   datetime: Date;
   text: string;
   new: boolean;
+  url: string;
 }

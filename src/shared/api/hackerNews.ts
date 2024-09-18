@@ -2,8 +2,7 @@ import axios from 'axios';
 
 export const getTopStories = async (): Promise<number[]> => {
   const res = await axios.get<number[]>(
-    'https://hacker-news.firebaseio.com/v0/topstories.json',
-    {}
+    'https://hacker-news.firebaseio.com/v0/topstories.json'
   );
 
   return res.data;
@@ -24,8 +23,7 @@ interface Article {
 
 export const getStoryDetails = async (id: number) => {
   const res = await axios.get<Article>(
-    `https://hacker-news.firebaseio.com/v0/item/${id}.json`,
-    {}
+    `https://hacker-news.firebaseio.com/v0/item/${id}.json`
   );
 
   return res.data;

@@ -36,6 +36,7 @@ export const Home: FC<IHomeProps> = ({ id, fetchedUser }) => {
               datetime: new Date(article.time * 1000),
               new: index < 3,
               text: article.text || '',
+              url: article.url,
             };
 
             addArticle(newArticle);

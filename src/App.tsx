@@ -35,19 +35,8 @@ export const App = () => {
           history={panelsHistory}
         >
           <Home id='home' fetchedUser={fetchedUser} />
-          <UserPage id={'user'} fetchedUser={fetchedUser}></UserPage>
-          <Article
-            id='article'
-            article={{
-              content_id: 0,
-              author: 'mikedegeofroy',
-              title:
-                'Radicle is an open source, peer-to-peer code collaboration stack built on Git',
-              score: 1878,
-              datetime: new Date(),
-              new: false,
-            }}
-          />
+          <UserPage id='user' fetchedUser={fetchedUser}></UserPage>
+          <Article id='article' />
         </View>
       </SplitCol>
     </SplitLayout>

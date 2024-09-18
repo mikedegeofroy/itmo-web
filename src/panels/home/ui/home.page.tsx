@@ -1,60 +1,14 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Panel, Group, NavIdProps, CardGrid } from '@vkontakte/vkui';
 import { UserInfo } from '@vkontakte/vk-bridge';
 import { ArticleCard } from '@/entities/articles/ui/article';
 
 import styles from './home.module.css';
 import { Banner } from '@/entities/banner/ui/banner';
-import { IArticleProps } from '@/entities/articles/model/types';
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
-
-const articles: IArticleProps[] = [
-  {
-    title:
-      'Radicle is an open source, peer-to-peer code collaboration stack built on Git ',
-    author: 'Mike de Geofroy',
-    score: 1173,
-    datetime: new Date(),
-    new: true,
-    content_id: 0,
-  },
-  {
-    title:
-      'Radicle is an open source, peer-to-peer code collaboration stack built on Git ',
-    author: 'Mike de Geofroy',
-    score: 1173,
-    datetime: new Date(),
-    new: true,
-    content_id: 0,
-  },
-  {
-    title:
-      'Radicle is an open source, peer-to-peer code collaboration stack built on Git ',
-    author: 'Mike de Geofroy',
-    score: 1173,
-    datetime: new Date(),
-    new: false,
-    content_id: 0,
-  },
-  {
-    title:
-      'Radicle is an open source, peer-to-peer code collaboration stack built on Git ',
-    author: 'Mike de Geofroy',
-    score: 1173,
-    datetime: new Date(),
-    new: false,
-    content_id: 0,
-  },
-  {
-    title:
-      'Radicle is an open source, peer-to-peer code collaboration stack built on Git ',
-    author: 'Mike de Geofroy',
-    score: 1173,
-    datetime: new Date(),
-    new: false,
-    content_id: 0,
-  },
-];
+import { getStoryDetails, getTopStories } from '@/shared/api/hackerNews';
+import { useArticleStore } from '@/shared/stores/article.store';
+import { IArticleProps } from '@/entities/articles/model/types';
 
 export interface IHomeProps extends NavIdProps {
   id: string;
@@ -64,6 +18,36 @@ export interface IHomeProps extends NavIdProps {
 export const Home: FC<IHomeProps> = ({ id, fetchedUser }) => {
   const { photo_200 } = { ...fetchedUser };
   const router = useRouteNavigator();
+
+  const { articles, addArticle } = useArticleStore();
+
+  useEffect(() => {
+    const fetchStories = async () => {
+      try {
+        const ids = await getTopStories();
+
+        ids.slice(0, 30).forEach((id, index) => {
+          getStoryDetails(id).then((article) => {
+            const newArticle: IArticleProps = {
+              content_id: article.id,
+              title: article.title,
+              author: article.by,
+              score: article.score,
+              datetime: new Date(article.time * 1000),
+              new: index < 3,
+              text: article.text || '',
+            };
+
+            addArticle(newArticle);
+          });
+        });
+      } catch (error) {
+        console.error('Ошибка при загрузке историй:', error);
+      }
+    };
+
+    fetchStories(); // Вызываем функцию внутри useEffect
+  }, []);
 
   return (
     <Panel id={id}>

@@ -1,11 +1,5 @@
-import { FC, useState } from 'react';
-import { IArticlePageProps } from '../model/types';
-import {
-  Card,
-  Panel,
-  PanelHeader,
-  PanelHeaderBack,
-} from '@vkontakte/vkui';
+import { FC, useEffect, useState } from 'react';
+import { Card, Panel, PanelHeader, PanelHeaderBack } from '@vkontakte/vkui';
 
 import styles from './article.module.css';
 import {
@@ -15,30 +9,63 @@ import {
 } from '@vkontakte/icons';
 import bridge from '@vkontakte/vk-bridge';
 import { useParams, useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
+import { useArticleStore } from '@/shared/stores/article.store';
+import { IArticleProps } from '@/entities/articles/model/types';
 
-export const Article: FC<IArticlePageProps> = ({ id, article }) => {
+export interface IArticlePageProps {
+  id: string;
+}
+
+export const Article: FC<IArticlePageProps> = () => {
   const router = useRouteNavigator();
+  const [saved, setSaved] = useState(false);
   const params = useParams<'id'>();
 
-  const [saved, setSaved] = useState(false);
+  const [article, setArticle] = useState<IArticleProps | null>(null);
+  const { articles } = useArticleStore();
 
-  console.log(params?.id);
+  useEffect(() => {
+    if (params?.id !== null)
+      setArticle(
+        articles.find((x) => x.content_id === parseInt(params?.id ?? '')) ??
+          null
+      );
+  }, [params, articles]);
 
   const share = () => {
-    bridge.send('VKWebAppShare', {
-      link: 'https://vk.com/app51913442_560086918',
-    });
+    bridge
+      .send('VKWebAppShowStoryBox', {
+        background_type: 'image',
+        url: 'https://sun9-65.userapi.com/c850136/v850136098/1b77eb/0YK6suXkY24.jpg',
+        attachment: {
+          text: 'book',
+          type: 'photo',
+          owner_id: 743784474,
+          id: 12345678,
+        },
+      })
+      .then((data) => {
+        console.log(data);
+        // if (data.code_data) {
+        //   // Редактор историй открыт
+        //   console.log(data);
+        // }
+      })
+      .catch((error) => {
+        // Ошибка
+        console.log(error);
+      });
   };
 
   return (
-    <Panel id={id}>
+    <Panel id={params?.id}>
       <PanelHeader
         before={
           <PanelHeaderBack onClick={() => router.back()}></PanelHeaderBack>
         }
       ></PanelHeader>
       <div style={{ margin: '12px', marginTop: '48px' }}>
-        <h1 className={styles['title']}>{article.title}</h1>
+        <h1 className={styles['title']}>{article?.title}</h1>
         <Card className={styles['header-card']}>
           <div
             style={{
@@ -47,8 +74,8 @@ export const Article: FC<IArticlePageProps> = ({ id, article }) => {
               justifyContent: 'space-between',
             }}
           >
-            <span>{article.author}</span>
-            <span>{article.datetime.toDateString()}</span>
+            <span>{article?.author}</span>
+            <span>{article?.datetime.toDateString()}</span>
           </div>
           <div style={{ display: 'flex' }}>
             <div onClick={share} className={styles['lower-icon']}>

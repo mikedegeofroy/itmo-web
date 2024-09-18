@@ -29,42 +29,7 @@ const articles: IArticleProps[] = [
     datetime: new Date(),
     new: true,
     content_id: 0,
-  },
-  {
-    title:
-      'Radicle is an open source, peer-to-peer code collaboration stack built on Git ',
-    author: 'Mike de Geofroy',
-    score: 1173,
-    datetime: new Date(),
-    new: true,
-    content_id: 0,
-  },
-  {
-    title:
-      'Radicle is an open source, peer-to-peer code collaboration stack built on Git ',
-    author: 'Mike de Geofroy',
-    score: 1173,
-    datetime: new Date(),
-    new: false,
-    content_id: 0,
-  },
-  {
-    title:
-      'Radicle is an open source, peer-to-peer code collaboration stack built on Git ',
-    author: 'Mike de Geofroy',
-    score: 1173,
-    datetime: new Date(),
-    new: false,
-    content_id: 0,
-  },
-  {
-    title:
-      'Radicle is an open source, peer-to-peer code collaboration stack built on Git ',
-    author: 'Mike de Geofroy',
-    score: 1173,
-    datetime: new Date(),
-    new: false,
-    content_id: 0,
+    text: '',
   },
 ];
 

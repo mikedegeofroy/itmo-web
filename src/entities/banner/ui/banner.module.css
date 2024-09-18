@@ -1,0 +1,43 @@
+
+.banner_container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-top: 60px;
+  padding-bottom: 80px;
+}
+
+.header_banner {
+  font-size: 4em;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+  line-height: 48px;
+  margin: 0;
+}
+
+.header_scroll_left {
+  animation: scroll_left 10s linear infinite;
+}
+
+.header_scroll_right {
+  animation: scroll_right 10s linear infinite;
+}
+
+@keyframes scroll_left {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes scroll_right {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}

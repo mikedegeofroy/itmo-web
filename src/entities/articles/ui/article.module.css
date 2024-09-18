@@ -1,0 +1,30 @@
+.card {
+  color: black;
+  font-size: 1.2em;
+  padding: 13px;
+}
+
+.card-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.new-icon {
+  color: red;
+  height: 20px;
+  width: 20px;
+}
+
+.lower-icon {
+  color: var(--vkui--color_background);
+  height: 20px;
+  width: 20px;
+}
+
+.card-title {
+  margin: 0;
+}
+
+.muted-text {
+  color: var(--vkui--color_text_muted--hover);
+}

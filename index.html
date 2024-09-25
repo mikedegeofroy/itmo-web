@@ -150,7 +150,14 @@
         <h2 class="centered">API Calls, Webhooks, custom actions.</h2>
         <h2 class="centered">Pricing</h2>
       </section>
-      <section style="height: 80vh"></section>
+      <section class="form-section">
+        <div id="formItems">
+        </div>
+        <form id="placeholderForm">
+          <input class="input" type="text" id="name" name="name" required />
+          <button class="btn btn-primary" type="submit">Enter</button>
+        </form>
+      </section>
     </main>
     <hr />
     <footer>
@@ -165,7 +172,7 @@
         </p>
       </div>
 
-      <p style='font-size: 1rem;' class="muted-dark">
+      <p style="font-size: 1rem" class="muted-dark">
         Loaded in:
         <span id="load-time">...</span>
         ms

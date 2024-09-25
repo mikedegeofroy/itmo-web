@@ -666,6 +666,57 @@ h2 {
   }
 }
 
+/* || Placeholder Form Section  */
+
+.form-section {
+  padding-top: 40px;
+  width: 50%;
+  margin: auto;
+  padding-bottom: 40px;
+}
+
+#placeholderForm {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#formItems {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.formItem {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 10px;
+  background-color: #181818;
+}
+
+.input {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 10px;
+  background-color: #181818;
+  color: white;
+
+  width: 100%;
+
+  border-width: 1px;
+  border-color: hsla(0, 0%, 100%, 0.3);
+  border-style: solid;
+}
+
+.input:focus {
+  outline: none;
+}
+
 /* || Footer Styles */
 
 footer {

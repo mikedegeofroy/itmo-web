@@ -8,6 +8,39 @@ window.addEventListener('load', (event) => {
   document.getElementById('load-time').innerHTML = event.timeStamp.toFixed(2);
 });
 
+// Form
+
+const formItems = JSON.parse(localStorage.getItem('formItems')) || [];
+
+function updateFormItemsDisplay() {
+  const formItemsDiv = document.getElementById('formItems');
+  formItemsDiv.innerHTML = '';
+
+  formItems.forEach((item) => {
+    const div = document.createElement('div');
+    div.classList.add('formItem');
+    div.textContent = item;
+    formItemsDiv.appendChild(div);
+  });
+}
+
+updateFormItemsDisplay();
+
+document
+  .getElementById('placeholderForm')
+  .addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+
+    formItems.push(name);
+
+    localStorage.setItem('formItems', JSON.stringify(formItems));
+
+    updateFormItemsDisplay();
+    document.getElementById('name').value = '';
+  });
+
 // Three JS
 
 const scene = new THREE.Scene();

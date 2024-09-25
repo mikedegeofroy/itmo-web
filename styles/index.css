@@ -447,6 +447,12 @@ h2 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+@media (max-width: 576px) {
+  .banner-section .banner {
+    flex-direction: column;
+  }
+}
+
 /* || Ping Card */
 
 .ping-card {
@@ -598,6 +604,12 @@ h2 {
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@media (max-width: 576px) {
+  .large-banner-section {
+    grid-template-columns: 1fr;
   }
 }
 

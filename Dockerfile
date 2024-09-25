@@ -1,6 +1,6 @@
-FROM nginx:stable-alpine
+FROM nginx
 
-COPY . .
+COPY . /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx/nginx.conf
 

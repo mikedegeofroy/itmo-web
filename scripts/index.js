@@ -2,6 +2,14 @@ import * as THREE from 'https://cdn.skypack.dev/three@0.129.0/build/three.module
 import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js';
 
+// Stats
+
+window.addEventListener('load', (event) => {
+  document.getElementById('load-time').innerHTML = event.timeStamp.toFixed(2);
+});
+
+// Three JS
+
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(
